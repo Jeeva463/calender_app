@@ -1,0 +1,17 @@
+export const appColors = {
+  btnBg: '#303245',
+  white: 'white',
+  tabBarBg: '#E9E9E9',
+  brand: '#6565DB',
+  purple: '#6565DB',
+  tabinactive: '#ccc',
+  selectedComp: '#6565DB',
+  headingComp: '#1A1A1A',
+  darkPurple: '#303245',
+  darkGrey: '#5B5959',
+  appBlue: '#6B96E4',
+  appWhite: '#F2F2F2',
+  grey: '#747474',
+  appBackground: "#4684D7",
+  themeWhite: '#FFFFFF',
+};

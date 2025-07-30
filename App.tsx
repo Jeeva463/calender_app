@@ -1,131 +1,64 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import React, {useEffect, useRef} from 'react';
+import {NativeModules, StatusBar, View} from 'react-native';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import RootNavigator from './rootNavigator';
+import Firebase from '@react-native-firebase/app';
+import SystemNavigationBar from 'react-native-system-navigation-bar';
+import {firebase} from '@react-native-firebase/remote-config';
+import {Text} from 'react-native';
 
-import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+//For Led setup in tab
+// const {LedModule} = NativeModules;
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+const App = () => {
+  //   let config = {
+  //     apiKey: 'AIzaSyBfnKzVQvWGD-ya60LzHgJM_icjZ5PCaOQ',
+  //     authDomain: 'calendar-app-b5a8d.firebaseapp.com',
+  //     projectId: 'calendar-app-b5a8d',
+  //     storageBucket: 'calendar-app-b5a8d.appspot.com',
+  //     messagingSenderId: '859994018036',
+  //     appId: '1:859994018036:web:a66528ef197d1f01dc0ea1',
+  //     databaseURL: 'alailabs.com',
+  //   };
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
+  //   useEffect(() => {
+  //     StatusBar.setHidden(true, 'none');
+  //     SystemNavigationBar.navigationHide();
+  //     let red = 4;
+  //     let green = 5;
+  //     // LedModule.createLedEvent('From React Native', green);
+  //     if (!Firebase.apps.length) {
+  //       Firebase.initializeApp(config);
+  //     } else {
+  //       Firebase.app(); // if already initialized, use that one
+  //     }
+  //     remoteCon();
+  //   }, []);
 
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
+  //   const remoteCon = async () => {
+  //     await firebase.remoteConfig().setConfigSettings({
+  //       minimumFetchIntervalMillis: 30000,
+  //     });
 
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  /*
-   * To keep the template simple and small we're adding padding to prevent view
-   * from rendering under the System UI.
-   * For bigger apps the reccomendation is to use `react-native-safe-area-context`:
-   * https://github.com/AppAndFlow/react-native-safe-area-context
-   *
-   * You can read more about it here:
-   * https://github.com/react-native-community/discussions-and-proposals/discussions/827
-   */
-  const safePadding = '5%';
+  //     var intialValues = await firebase.remoteConfig().setDefaults({
+  //       app_heartbeat: 300000,
+  //       force_restart: false,
+  //       optional_restart_event: 23,
+  //       refresh_event: 15000,
+  //       restart_event: 6,
+  //     });
+  //     var updatedConfig = await firebase.remoteConfig().fetchAndActivate();
+  //     return 'Sucess';
+  //   };
 
   return (
-    <View style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        style={backgroundStyle}>
-        <View style={{paddingRight: safePadding}}>
-          <Header/>
-        </View>
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-            paddingHorizontal: safePadding,
-            paddingBottom: safePadding,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </View>
+    <SafeAreaProvider>
+      {/* <RootNavigator /> */}
+      <View>
+        <Text>hi</Text>
+      </View>
+    </SafeAreaProvider>
   );
-}
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
+};
 
 export default App;
