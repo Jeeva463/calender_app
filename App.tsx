@@ -2,9 +2,7 @@ import React, {useEffect, useRef} from 'react';
 import {NativeModules, StatusBar, View} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import RootNavigator from './rootNavigator';
-import Firebase from '@react-native-firebase/app';
 import SystemNavigationBar from 'react-native-system-navigation-bar';
-import {firebase} from '@react-native-firebase/remote-config';
 import {Text} from 'react-native';
 
 //For Led setup in tab
@@ -53,10 +51,7 @@ const App = () => {
 
   return (
     <SafeAreaProvider>
-      {/* <RootNavigator /> */}
-      <View>
-        <Text>hi</Text>
-      </View>
+      <RootNavigator />
     </SafeAreaProvider>
   );
 };

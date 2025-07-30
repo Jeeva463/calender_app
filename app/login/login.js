@@ -5,13 +5,11 @@ import {
 import { Input, Text } from '@rneui/themed';
 import { appColors } from '../appConstants/colors';
 import { textFile } from '../appConstants/textFile';
-import auth from '@react-native-firebase/auth';
 import { getUniqueId } from 'react-native-device-info';
 import DataService from '../api/services/DataServices';
 import Spinner from 'react-native-loading-spinner-overlay';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import styles from './styleLogin'
-import { firebase } from '@react-native-firebase/remote-config';
 import { useNavigation } from '@react-navigation/native';
 
 export default Login = () => {    
@@ -83,16 +81,9 @@ export default Login = () => {
     const login = async () => {
         setspinnerLoading(true);
         console.log("login check")
-        let apidataCall = await auth().signInWithEmailAndPassword(userName, password).then(response => {
-            storeUserData(userName)
-            if (response && response.user) {
-                redirectFunc(userDetails);
-            } else {
-                Alert.alert("Invalid Credentials")
-            }
-        }).catch(error => {
-            Alert.alert(`Something went worng${error}`)
-        });
+        // Simplified login without Firebase auth for now
+        storeUserData(userName);
+        redirectFunc(userDetails);
         setspinnerLoading(false);
     }
 

@@ -7,7 +7,6 @@ import {
 import momentJS from 'moment';
 import styles from './styleFirstScreen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { firebase } from '@react-native-firebase/remote-config';
 import { useNavigation } from '@react-navigation/native';
 
 const Home = () => {
@@ -47,7 +46,9 @@ const FirstPage = () => {
     
     const getSession =async() => {
         var data = await AsyncStorage.getItem('roomName');
-        data = JSON.parse(data);
+        if (data) {
+            data = JSON.parse(data);
+        }
         // if (data && data.roomName) {                
             navigation.navigate('MainScreen', {
               roomMail: 'meetingroom@fiber-transmission.com',
@@ -55,12 +56,6 @@ const FirstPage = () => {
             });
         // } else {
             // navigation.navigate('LoginPage');
-           /*  navigation.navigate('MainScreen', { 
-            roomMail: "Guoco-Midtown-GMT-Dummy01NotOperational@basf.onmicrosoft.com",
-            roomName: "Guoco-Midtown-GMT-18-Dummy01NotOperational (0)",
-            refreshEvent: firebase.remoteConfig().getValue('refresh_event').asNumber() != undefined ? firebase.remoteConfig().getValue('refresh_event').asNumber() : 15000,
-            heartbeatEvent: firebase.remoteConfig().getValue('app_heartbeat').asNumber() != undefined ? firebase.remoteConfig().getValue('app_heartbeat').asNumber() :300000
-        });  */  
         // }
     }
     return (
