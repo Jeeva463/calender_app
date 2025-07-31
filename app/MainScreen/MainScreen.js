@@ -53,21 +53,21 @@ const MainComponent = props => {
   //     heartBeartAPIRemainder.current = 1;
   //     var getMemory = 0;
   //     var deviceIdDetails = 0;
-  //     getUniqueId()
+  //     await getUniqueId()
   //       .then(uniqueId => {
   //         deviceIdDetails = uniqueId;
   //       })
   //       .catch(error => {
   //         console.error('geeting error in device id..', error);
   //       });
-  //     var devIn = await DeviceInfo.getUsedMemory().then(usedMemory => {
+  //     await DeviceInfo.getUsedMemory().then(usedMemory => {
   //       getMemory = usedMemory;
   //     });
   //     let memoryJson = {
   //       roomMail: props.route.params.roomMail,
   //       memory: getMemory,
   //     };
-  //     var memoryResult = await DataServices.hearbeatService(memoryJson);
+  //     await DataServices.hearbeatService(memoryJson);
   //   } catch (error) {
   //     console.error(error);
   //   }

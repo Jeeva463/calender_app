@@ -1,0 +1,18 @@
+[versions]
+agp = "8.3.0"
+kotlin = "1.9.22"
+compileSdk = "35"
+minSdk = "24"
+targetSdk = "35"
+ndkVersion = "27.1.12297006"
+buildTools = "35.0.0"
+
+[libraries]
+android-gradle-plugin = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }
+kotlin-gradle-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+download = { id = "de.undercouch.download", version = "5.4.0" }
