@@ -5,7 +5,7 @@ import { Text, TouchableOpacity,Dimensions } from 'react-native'
 import { CalendarTouchableOpacityProps, ICalendarEventBase } from '../interfaces'
 import { useTheme } from '../theme/ThemeContext'
 import { formatStartEnd } from '../utils'
-import {fontScale} from '../../../utils/adapterUtil'
+import { Dimensions } from 'react-native'
 
 interface DefaultCalendarEventRendererProps<T extends ICalendarEventBase> {
   touchableOpacityProps: CalendarTouchableOpacityProps
@@ -31,18 +31,10 @@ export function DefaultCalendarEventRenderer<T extends ICalendarEventBase>({
       {dayjs(event.end).diff(event.start, 'minute') < 32 && showTime ? (
         <Text style={[eventTitleStyle,{alignSelf:"center",fontSize:Dimensions.get("screen").width/62, fontWeight:"bold"}]}>
           {event.title}
-          {/* <Text style={eventTimeStyle}>
-            {dayjs(event.start).format(ampm ? 'hh:mm a' : 'HH:mm')}
-          </Text> */}
         </Text>
       ) : (
         <>
           <Text style={[eventTitleStyle,{alignSelf:"center",fontSize:Dimensions.get("screen").width/62,textAlignVertical:"bottom",fontWeight:"bold"}]}>{event.title}</Text>
-         {/*  {showTime && (
-            <Text style={eventTimeStyle}>
-              {formatStartEnd(event.start, event.end, ampm ? 'h:mm a' : 'HH:mm')}
-            </Text>
-          )} */}
           {event.children && event.children}
         </>
       )}

@@ -29,6 +29,7 @@ const ClockFunction = props => {
           RNRestart.Restart();
         }
       }
+   
       setDt(timezoneValue);
     }, 15000);
     return () => clearInterval(secTimer);

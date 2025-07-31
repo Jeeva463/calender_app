@@ -116,8 +116,16 @@ export default Login = () => {
       });
     } else {
       Alert.alert('All the fields are mandatory');
+    const login = async () => {
+        setspinnerLoading(true);
+        console.log("login check")
+        // Simplified login without Firebase auth for now
+        storeUserData(userName);
+        redirectFunc(userDetails);
+        setspinnerLoading(false);
     }
   };
+}
 
   return (
     <>

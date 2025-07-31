@@ -14,7 +14,6 @@ import ClockComp from './clock';
 import BookingScreen from '../BookingScreen/bookingScreen';
 import DeviceInfo from 'react-native-device-info';
 import {appFonts} from '../appConstants/fonts';
-import {firebase} from '@react-native-firebase/remote-config';
 import DataServices from '../api/services/DataServices';
 import CommonFunctions from './Function';
 import styles from './styles';
@@ -210,7 +209,7 @@ const MainComponent = props => {
   useEffect(() => {
     const apiRender = setInterval(() => {
       getMeetingList();
-    }, firebase.remoteConfig().getValue('refresh_event').asNumber());
+    }, 15000); // Default 15 seconds instead of firebase config
     return () => clearInterval(apiRender);
   });
 
