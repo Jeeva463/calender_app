@@ -26,7 +26,7 @@ import {getTimeZone} from 'react-native-localize';
 const windowsWidth = Dimensions.get('screen').width;
 const windowsHeight = Dimensions.get('screen').height;
 
-// const {LedModule} = NativeModules;
+const {LedModule} = NativeModules;
 export const UserContext = createContext();
 export const BookingContext = createContext();
 
@@ -122,21 +122,21 @@ const MainComponent = props => {
               await CommonFunctions.gettingCurrentMeetingDetails(
                 customizedEvents,
               );
-            // if (currentMeetingSchedule?.length > 0) {
-            //   if (currentMeetingDetails[0].occupied) {
-            //     LedModule.createLedEvent('From React Native', red);
-            //   } else {
-            //     if (!currentMeetingDetails[0].occupied) {
-            //       LedModule.createLedEvent('From React Native', orange);
-            //     }
-            //   }
-            //   setCurrentMeetingDetails(currentMeetingSchedule);
-            // } else {
-            //   LedModule.createLedEvent('From React Native', green);
-            //   if (currentMeetingDetails?.length > 0) {
-            //     setCurrentMeetingDetails([]);
-            //   }
-            // }
+            if (currentMeetingSchedule?.length > 0) {
+              if (currentMeetingDetails[0].occupied) {
+                LedModule.createLedEvent('From React Native', red);
+              } else {
+                if (!currentMeetingDetails[0].occupied) {
+                  LedModule.createLedEvent('From React Native', orange);
+                }
+              }
+              setCurrentMeetingDetails(currentMeetingSchedule);
+            } else {
+              LedModule.createLedEvent('From React Native', green);
+              if (currentMeetingDetails?.length > 0) {
+                setCurrentMeetingDetails([]);
+              }
+            }
           } else {
             apiResult.current = meetingResults.data;
             var customMeetingDatas = await CommonFunctions.eventCreation(
@@ -169,9 +169,9 @@ const MainComponent = props => {
         if (currentMeetingDetails?.length > 0) {
           setCurrentMeetingDetails([]);
         }
-        // if (apiResult.current !== undefined || apiResult.current !== []) {
-        //   apiResult.current = [];
-        // }
+        if (apiResult.current !== undefined || apiResult.current.length > 0) {
+          apiResult.current = [];
+        }
       }
     } catch (error) {
       console.error(error);
