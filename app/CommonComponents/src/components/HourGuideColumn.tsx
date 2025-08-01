@@ -21,7 +21,7 @@ const _HourGuideColumn = ({ cellHeight, hour, ampm, hourStyle = {} }: HourGuideC
   )
 
   return (
-    <View style={{ height: Dimensions.get('window').width / 10.01 , }}>
+    <View style={{ height: cellHeight }}>
       <Text style={[objHasContent(hourStyle) ? hourStyle : textStyle, u['text-center'], {fontSize:Dimensions.get("screen").width/100}]}>
         {formatHour(hour, ampm)}
       </Text>

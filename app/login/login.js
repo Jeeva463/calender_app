@@ -109,23 +109,30 @@ export default Login = () => {
 
   const submitButtonFun = () => {
     if (password.length > 0 && userName.length > 0) {
-      //login();
-      navigation.navigate('MainScreen', {
-        roomMail: 'basfadmin@gmail.com',
-        roomName: 'Guoco Midtown',
-      });
+      login();
     } else {
       Alert.alert('All the fields are mandatory');
-    const login = async () => {
-        setspinnerLoading(true);
-        console.log("login check")
-        // Simplified login without Firebase auth for now
-        storeUserData(userName);
-        redirectFunc(userDetails);
-        setspinnerLoading(false);
     }
   };
-}
+
+  const login = async () => {
+    setspinnerLoading(true);
+    console.log('login check');
+    let apidataCall = await auth()
+      .signInWithEmailAndPassword(userName, password)
+      .then(response => {
+        storeUserData(userName);
+        if (response && response.user) {
+          redirectFunc(userDetails);
+        } else {
+          Alert.alert('Invalid Credentials');
+        }
+      })
+      .catch(error => {
+        Alert.alert(`Something went wrong: ${error}`);
+      });
+    setspinnerLoading(false);
+  };
 
   return (
     <>

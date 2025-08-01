@@ -1,11 +1,10 @@
 import dayjs from 'dayjs'
 import * as React from 'react'
-import { Text, TouchableOpacity,Dimensions } from 'react-native'
+import { Text, TouchableOpacity, Dimensions } from 'react-native'
 
 import { CalendarTouchableOpacityProps, ICalendarEventBase } from '../interfaces'
 import { useTheme } from '../theme/ThemeContext'
 import { formatStartEnd } from '../utils'
-import { Dimensions } from 'react-native'
 
 interface DefaultCalendarEventRendererProps<T extends ICalendarEventBase> {
   touchableOpacityProps: CalendarTouchableOpacityProps

@@ -64,25 +64,25 @@ export default CustomizedDayCalenderComponent = () => {
   },[]);
 
   const getDeviceDetails = () => {
-    getUniqueId().then((uniqueId) => {
+    getUniqueId().then(uniqueId => {
       setDeviceid(uniqueId)
-      }).catch((error) => {
-        console.error("geeting error in device id..", error);
-      });
+    }).catch(error => {
+      console.error('getting error in device id..', error);
+    });
   }
 
   const storeRoomData = async (value) => {
     try {
       await AsyncStorage.setItem('roomName', value)
     } catch (e) {
-      console.error("error meessage..",e)
+      console.error('error message..', e)
     }
   }
 
   const LinkingFunction = async () => {
-    try{
-    if (DummyArray.length == 0) {
-      Alert.alert("Select Any Rooms to continue")
+    try {
+    if (DummyArray.length === 0) {
+      Alert.alert('Select Any Rooms to continue')
     } else {
       setspinnerLoading(true);
       var roomId;
@@ -96,16 +96,16 @@ export default CustomizedDayCalenderComponent = () => {
         }
       })
       var data = {
-        "mailId": roomMailId,
-        "deviceId": deviceid
+        'mailId': roomMailId,
+        'deviceId': deviceid
       }
       DataServices.linkRoom(data).then(res => {
         let val = {
           roomMail: roomMailId,
           roomName: roomName,
-          "status": "success"
+          'status': 'success'
         }
-        if (res?.data === "Room Linked Successfully") {
+        if (res?.data === 'Room Linked Successfully') {
           storeRoomData(JSON.stringify(val))
           setspinnerLoading(false);
           navigation.navigate('MainScreen', {
@@ -114,14 +114,15 @@ export default CustomizedDayCalenderComponent = () => {
             deviceid: deviceid,
           });
         } else {
-          Alert.alert("Please contact admin")
+          Alert.alert('Please contact admin')
         }
       }).catch(e => {
         console.log(e)
         setspinnerLoading(false);
-        Alert.alert("Something Went Wrong Please Try Again")
+        Alert.alert('Something Went Wrong Please Try Again')
       });
-    }}catch(error) {
+    }
+    } catch(error) {
       throw error;
     }
   };
