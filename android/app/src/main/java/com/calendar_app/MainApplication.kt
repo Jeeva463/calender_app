@@ -33,6 +33,13 @@ class MainApplication : Application(), ReactApplication {
 
   private val newArchitectureNativeHost = MainApplicationReactNativeHost(this)
 
+  override fun getReactNativeHost(): ReactNativeHost {
+  return if (BuildConfig.IS_NEW_ARCHITECTURE_ENABLED) {
+    newArchitectureNativeHost
+  } else {
+    reactNativeHost
+  }
+}
 
   override val reactHost: ReactHost
     get() = getDefaultReactHost(applicationContext, reactNativeHost)

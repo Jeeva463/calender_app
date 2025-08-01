@@ -205,7 +205,8 @@ if (isNewArchitectureEnabled()) {
 }
 
 
-apply plugin: 'com.google.gms.google-services'
+
+
 
 def isNewArchitectureEnabled() {
     // To opt-in for the New Architecture, you can either:
